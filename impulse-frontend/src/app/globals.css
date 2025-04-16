@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme {
+  --color-impulse-yellow: #FED95F;
+  --color-impule-gray: #5C5C5C;
+  --color-impulse-secondary-yellow: #FFECAC;
+  --color-impulse-secondary-gray: #ABABAB;
+  --color-altered-white: #FFFBF6;
+  --color-altered-black: #040E1D;
+
+  --font-poppins: Poppins, sans-serif;
+}
