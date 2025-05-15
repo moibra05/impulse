@@ -1,5 +1,20 @@
 import type { Metadata } from "next";
+import { ThemeProvider } from "./components/theme-provider";
+import { Libre_Franklin } from "next/font/google";
+import { Source_Sans_3 } from "next/font/google";
 import "./globals.css";
+
+const libre_franklin = Libre_Franklin({
+  subsets: ["latin"],
+  variable: "--font-libre-franklin",
+  display: "swap",
+});
+
+const source_sans = Source_Sans_3({
+  subsets: ["latin"],
+  variable: "--font-source-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Impulse | Smart Shopping Tracker",
@@ -15,8 +30,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-poppins antialiased`}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`antialiased flex justify-center min-h-screen ${source_sans.variable} ${libre_franklin.variable})`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          storageKey="theme"
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

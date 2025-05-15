@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../globals.css";
 
 export const metadata: Metadata = {
   title: "Impulse | Smart Shopping Tracker",
@@ -15,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-poppins antialiased`}>{children}</body>
-    </html>
+    <section>
+      {children}
+    </section>
   );
 }
