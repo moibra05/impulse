@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`antialiased flex justify-center min-h-screen ${source_sans.variable} ${libre_franklin.variable})`}
+        className={`antialiased min-h-screen relative ${source_sans.variable} ${libre_franklin.variable})`}
       >
         <ThemeProvider
           attribute="class"
@@ -43,6 +43,9 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
       </body>
+      <footer className="absolute bottom-0 right-0 left-0 text-xs text-muted-foreground text-center py-4 border-t mt-12 mx-8">
+        <p>© {new Date().getFullYear()} Impulse by Mohamed Ibrahim.</p>
+      </footer>
     </html>
   );
 }

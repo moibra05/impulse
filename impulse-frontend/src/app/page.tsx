@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="h-fit my-auto flex items-center gap-24 flex-col lg:flex-row p-4">
+    <main className="min-h-screen flex items-center gap-24 flex-col lg:flex-row p-4 justify-center">
       <Image
         src={"/impulse-logo.svg"}
         width={350}
@@ -18,6 +18,6 @@ export default function Home() {
           <Link href="/sign-up">Get Started</Link>
         </Button>
       </div>
-    </div>
+    </main>
   );
 }
