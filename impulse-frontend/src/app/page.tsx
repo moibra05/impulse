@@ -15,7 +15,7 @@ export default function Home() {
         <h1>Impulse</h1>
         <h2>Track Prices. Shop Smarter.</h2>
         <Button size="cta" className="mt-16 w-full font-bold" asChild>
-          <Link href="/login">Get Started</Link>
+          <Link href="/sign-up">Get Started</Link>
         </Button>
       </div>
     </div>
