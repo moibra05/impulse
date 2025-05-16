@@ -78,7 +78,7 @@ export default function LoginForm() {
           )}
         />
         <Button type="submit" size="submit">
-          Submit
+          Login
         </Button>
         <div className="flex items-center">
           <div className="flex-1 h-[2px] bg-muted mr-3"></div>
