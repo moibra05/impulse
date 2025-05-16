@@ -39,9 +39,9 @@ export default function ForgotPasswordForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-8 w-full max-w-[500px] p-8 m-6 rounded bg-secondary"
+        className="flex flex-col gap-8 w-full h-fit max-w-[500px] p-8 m-6 rounded bg-secondary"
       >
-        <h2 className="">Welcome Back.</h2>
+        <h2 className="">Password Reset</h2>
         <FormField
           control={form.control}
           name="email"

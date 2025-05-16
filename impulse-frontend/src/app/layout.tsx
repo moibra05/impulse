@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`antialiased min-h-screen relative ${source_sans.variable} ${libre_franklin.variable})`}
+        className={`flex flex-col min-h-screen ${source_sans.variable} ${libre_franklin.variable}`}
       >
         <ThemeProvider
           attribute="class"
@@ -40,12 +40,14 @@ export default function RootLayout({
           enableSystem
           storageKey="theme"
         >
-          {children}
+          <div className="flex-grow flex justify-center items-center">
+            {children}
+          </div>
+          <footer className="text-xs text-muted-foreground text-center py-4 border-t mx-8">
+            <p>© {new Date().getFullYear()} Impulse by Mohamed Ibrahim.</p>
+          </footer>
         </ThemeProvider>
       </body>
-      <footer className="absolute bottom-0 right-0 left-0 text-xs text-muted-foreground text-center py-4 border-t mt-12 mx-8">
-        <p>© {new Date().getFullYear()} Impulse by Mohamed Ibrahim.</p>
-      </footer>
     </html>
   );
 }

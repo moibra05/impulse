@@ -41,9 +41,9 @@ export default function LoginForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-8 w-full max-w-[500px] p-8 m-6 rounded bg-secondary"
+        className="flex flex-col gap-8 w-full max-w-[500px] p-8 m-6 rounded bg-secondary h-fit"
       >
-        <h2 className="">Welcome Back.</h2>
+        <h2>Welcome Back</h2>
         <FormField
           control={form.control}
           name="email"

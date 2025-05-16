@@ -52,7 +52,7 @@ export default function SignupForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-8 w-full max-w-[500px] p-8 m-6 rounded bg-secondary"
+        className="flex flex-col gap-8 w-full h-fit max-w-[500px] p-8 m-6 rounded bg-secondary"
       >
         <h2 className="">Create an Account</h2>
         <FormField
@@ -60,7 +60,9 @@ export default function SignupForm() {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name*</FormLabel>
+              <FormLabel>
+                Name<span className="text-red-700">*</span>
+              </FormLabel>
               <FormControl>
                 <Input placeholder="Enter your name" {...field} />
               </FormControl>
@@ -73,7 +75,9 @@ export default function SignupForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email*</FormLabel>
+              <FormLabel>
+                Email<span className="text-red-700">*</span>
+              </FormLabel>
               <FormControl>
                 <Input placeholder="Enter your email" {...field} />
               </FormControl>
@@ -86,7 +90,9 @@ export default function SignupForm() {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password*</FormLabel>
+              <FormLabel>
+                Password<span className="text-red-700">*</span>
+              </FormLabel>
               <FormControl>
                 <Input
                   placeholder="Create a password"
@@ -104,7 +110,9 @@ export default function SignupForm() {
           name="confirm"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Confirm Password*</FormLabel>
+              <FormLabel>
+                Confirm Password<span className="text-red-700">*</span>
+              </FormLabel>
               <FormControl>
                 <Input
                   placeholder="Create a password"
