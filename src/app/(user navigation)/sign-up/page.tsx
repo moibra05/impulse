@@ -41,6 +41,8 @@ export default function SignupForm() {
     defaultValues: {
       name: "",
       email: "",
+      password: "",
+      confirm: "",
     },
   });
 
