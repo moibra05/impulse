@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "./components/theme-provider";
 import { Libre_Franklin } from "next/font/google";
 import { Source_Sans_3 } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const libre_franklin = Libre_Franklin({
@@ -46,6 +47,7 @@ export default function RootLayout({
           <footer className="text-xs text-muted-foreground text-center py-4 border-t mx-8">
             <p>© {new Date().getFullYear()} Impulse by Mohamed Ibrahim.</p>
           </footer>
+          <Toaster position="top-center" richColors />
         </ThemeProvider>
       </body>
     </html>

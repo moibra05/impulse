@@ -14,6 +14,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { createClient } from "../../../../utils/supabase/client";
+import { redirect } from "next/navigation";
+import { toast } from "sonner";
 
 const schema = z.object({
   email: z
@@ -33,8 +36,23 @@ export default function LoginForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof schema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof schema>) {
+    const supabase = await createClient();
+    const { email, password } = values;
+
+    const data = {
+      email,
+      password,
+    };
+
+    const { error } = await supabase.auth.signInWithPassword(data);
+
+    if (error) {
+      toast.error(`Login failed. ${error.message}`);
+      console.error("Login error:", error.message);
+    } else {
+      redirect("/");
+    }
   }
 
   return (
@@ -88,7 +106,7 @@ export default function LoginForm() {
         <div className="flex items-center justify-center">
           <p>Don&apos;t have an account yet?</p>
           <Button variant="link" size="link" className="ml-2">
-            <Link href="sign-up">Sign up</Link>
+            <Link href="/sign-up">Sign up</Link>
           </Button>
         </div>
       </form>
