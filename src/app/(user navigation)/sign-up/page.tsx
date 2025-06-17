@@ -15,10 +15,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { createClient } from "../../../../utils/supabase/client";
+import { redirect } from "next/navigation";
+import { toast } from "sonner";
 
 const schema = z
   .object({
-    name: z.string().min(1, { message: "Name is required" }),
     email: z
       .string()
       .trim()
@@ -39,13 +41,32 @@ export default function SignupForm() {
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
     defaultValues: {
-      name: "",
       email: "",
+      password: "",
+      confirm: "",
     },
   });
 
-  function onSubmit() {
-    console.log("Account created!");
+  async function onSubmit(values: z.infer<typeof schema>) {
+    const supabase = await createClient();
+    const { email, password } = values;
+
+    const data = {
+      email,
+      password,
+    };
+
+    const { error } = await supabase.auth.signUp(data);
+
+    if (error) {
+      toast.error(`Signup failed. ${error.message}`);
+      console.error("Signup error:", error.message);
+    } else {
+      toast.success(
+        "Account created successfully! Please check your email to verify your account."
+      );
+      redirect("/login");
+    }
   }
 
   return (
@@ -55,21 +76,6 @@ export default function SignupForm() {
         className="flex flex-col gap-8 w-full h-fit max-w-[500px] p-8 m-6 rounded bg-secondary"
       >
         <h2 className="">Create an Account</h2>
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                Name<span className="text-red-700">*</span>
-              </FormLabel>
-              <FormControl>
-                <Input placeholder="Enter your name" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <FormField
           control={form.control}
           name="email"
