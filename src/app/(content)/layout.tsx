@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
-import {
-  SidebarProvider,
-  SidebarInset,
-} from "@/components/ui/sidebar";
-import MySidebar from "../components/sidebar";
+import Navbar from "../components/navbar";
 import "../globals.css";
 
 export const metadata: Metadata = {
@@ -20,11 +16,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <SidebarProvider>
-      <MySidebar />
-      <SidebarInset>
-        <main className="p-4">{children}</main>
-      </SidebarInset>
-    </SidebarProvider>
+    <div className="flex flex-col min-h-screen w-full">
+      <Navbar />
+      <main className="p-4 max-w-7xl mx-auto">{children}</main>
+    </div>
   );
 }
