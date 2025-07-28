@@ -51,7 +51,7 @@ export default function LoginForm() {
       toast.error(`Login failed. ${error.message}`);
       console.error("Login error:", error.message);
     } else {
-      redirect("/");
+      redirect("/dashboard");
     }
   }
 
